@@ -1,5 +1,5 @@
 /**
- * Relayer Example - How to use gasless transactions with PolyEmperion SDK
+ * Relayer Example - How to use gasless transactions with POLYNOCTON SDK
  * 
  * This example shows how to:
  * 1. Initialize the SDK with relayer configuration
@@ -23,7 +23,7 @@
  * npm run examples:relayer
  */
 
-import { PolyEmperionSDK } from "../src/client.js";
+import { POLYNOCTONSDK } from "../src/client.js";
 
 async function main() {
   // Get your private key from environment variable
@@ -38,12 +38,12 @@ async function main() {
     process.exit(1);
   }
 
-  console.log("=== PolyEmperion SDK Relayer Example ===\n");
+  console.log("=== POLYNOCTON SDK Relayer Example ===\n");
   console.log("⚠️  WARNING: Relayer is for ADVANCED use cases");
   console.log("    Most users should use regular trading instead.\n");
 
   // Initialize SDK with relayer configuration
-  const sdk = new PolyEmperionSDK({
+  const sdk = new POLYNOCTONSDK({
     debug: true,
     relayer: {
       chainId: 137, // Polygon mainnet
