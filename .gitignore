@@ -1,7 +1,7 @@
 # Dependencies
 node_modules/
 package-lock.json
-PolyNocton.lock
+PolyCarvora.lock
 pnpm-lock.yaml
 
 # Build outputs
@@ -17,8 +17,8 @@ dist/
 logs/
 *.log
 npm-debug.log*
-PolyNocton-debug.log*
-PolyNocton-error.log*
+PolyCarvora-debug.log*
+PolyCarvora-error.log*
 pnpm-debug.log*
 
 # OS files
