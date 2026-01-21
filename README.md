@@ -781,8 +781,8 @@ Our goal is to make it easy for anyone — from developers to traders — to bui
 
 ### Follow Us
 
-- 🐦 X (Twitter): [@POLYCAVORA](https://x.com/POLYCAVORAxyz)
-- 🌐 Website: [https://POLYCAVORA.xyz](https://POLYCAVORA.xyz)
+- 🐦 X (Twitter): [@POLYCAVORA](https://x.com/polycavoraxyz)
+- 🌐 Website: [https://POLYCAVORA.xyz](https://polycavora.xyz)
 
 ### $POLYCAVORA Token
 
