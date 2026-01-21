@@ -1,10 +1,10 @@
-# POLYNOCTON SDK
+# POLYCAVORA SDK
 
-**POLYNOCTON SDK** is a complete TypeScript toolkit for **Polymarket** — fetch real-time data, stream live orderbooks, and **execute trades** programmatically.
+**POLYCAVORA SDK** is a complete TypeScript toolkit for **Polymarket** — fetch real-time data, stream live orderbooks, and **execute trades** programmatically.
 
 Build automated trading bots, market-making strategies, dashboards, and AI agents powered by on-chain prediction markets.
 
-[![npm version](https://img.shields.io/npm/v/@POLYNOCTON/sdk.svg)](https://www.npmjs.com/package/@POLYNOCTON/sdk)
+[![npm version](https://img.shields.io/npm/v/@POLYCAVORA/sdk.svg)](https://www.npmjs.com/package/@POLYCAVORA/sdk)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ---
@@ -30,13 +30,13 @@ Build automated trading bots, market-making strategies, dashboards, and AI agent
 Install via npm:
 
 ```bash
-npm install @POLYNOCTON/sdk
+npm install @POLYCAVORA/sdk
 ```
 
 Or via yarn:
 
 ```bash
-yarn add @POLYNOCTON/sdk
+yarn add @POLYCAVORA/sdk
 ```
 
 For WebSocket support in Node.js, you'll also need to install `ws`:
@@ -54,9 +54,9 @@ npm install ws
 ### Data & Streaming (No Trading)
 
 ```typescript
-import { POLYNOCTONSDK } from "@POLYNOCTON/sdk";
+import { POLYCAVORASDK } from "@POLYCAVORA/sdk";
 
-const sdk = new POLYNOCTONSDK();
+const sdk = new POLYCAVORASDK();
 
 // Fetch all active markets
 const markets = await sdk.getMarkets();
@@ -71,14 +71,14 @@ console.log(market.prices);
 ### Real-time Orderbook Streaming
 
 ```typescript
-import { POLYNOCTONSDK } from "@POLYNOCTON/sdk";
+import { POLYCAVORASDK } from "@POLYCAVORA/sdk";
 
 // In Node.js, enable WebSocket support
 if (typeof window === "undefined") {
   globalThis.WebSocket = (await import("ws")).default as any;
 }
 
-const sdk = new POLYNOCTONSDK({ debug: true });
+const sdk = new POLYCAVORASDK({ debug: true });
 
 // Subscribe to orderbook updates
 const unsubscribe = sdk.onOrderbook(
@@ -114,10 +114,10 @@ const unsubscribe = sdk.onOrderbook(
 For automated trading bots and backend services:
 
 ```typescript
-import { POLYNOCTONSDK } from "@POLYNOCTON/sdk";
+import { POLYCAVORASDK } from "@POLYCAVORA/sdk";
 
 // Initialize SDK with trading configuration
-const sdk = new POLYNOCTONSDK({
+const sdk = new POLYCAVORASDK({
   trading: {
     chainId: 137, // Polygon mainnet
     backend: {
@@ -159,7 +159,7 @@ console.log("Order canceled!");
 For browser-based applications where users connect their own wallets:
 
 ```typescript
-import { POLYNOCTONSDK } from "@POLYNOCTON/sdk";
+import { POLYCAVORASDK } from "@POLYCAVORA/sdk";
 import { ethers } from "ethers";
 
 // Connect to user's wallet (MetaMask, WalletConnect, etc.)
@@ -168,7 +168,7 @@ await provider.send("eth_requestAccounts", []);
 const signer = provider.getSigner();
 
 // Initialize SDK with frontend mode
-const sdk = new POLYNOCTONSDK({
+const sdk = new POLYCAVORASDK({
   trading: {
     chainId: 137,
     frontend: {
@@ -223,9 +223,9 @@ A relayer is a service that executes transactions and pays the gas fees on your 
 ### Backend Relayer (Automated Systems)
 
 ```typescript
-import { POLYNOCTONSDK } from "@POLYNOCTON/sdk";
+import { POLYCAVORASDK } from "@POLYCAVORA/sdk";
 
-const sdk = new POLYNOCTONSDK({
+const sdk = new POLYCAVORASDK({
   relayer: {
     chainId: 137,
     backend: {
@@ -254,13 +254,13 @@ console.log("Transaction confirmed:", result.transactionHash);
 ### Frontend Relayer (Web Apps)
 
 ```typescript
-import { POLYNOCTONSDK } from "@POLYNOCTON/sdk";
+import { POLYCAVORASDK } from "@POLYCAVORA/sdk";
 import { ethers } from "ethers";
 
 const provider = new ethers.providers.Web3Provider(window.ethereum);
 const signer = provider.getSigner();
 
-const sdk = new POLYNOCTONSDK({
+const sdk = new POLYCAVORASDK({
   relayer: {
     chainId: 137,
     frontend: {
@@ -290,20 +290,20 @@ const response = await relayer.executeProxyTransactions([...]);
 
 ## 📖 API Reference
 
-### `POLYNOCTONSDK`
+### `POLYCAVORASDK`
 
 The main SDK class for interacting with Polymarket.
 
 #### Constructor
 
 ```typescript
-const sdk = new POLYNOCTONSDK(config?: POLYNOCTONConfig);
+const sdk = new POLYCAVORASDK(config?: POLYCAVORAConfig);
 ```
 
 **Configuration Options:**
 
 ```typescript
-interface POLYNOCTONConfig {
+interface POLYCAVORAConfig {
   metaBaseUrl?: string;  // API base URL (default: "https://clob.polymarket.com")
   wsBaseUrl?: string;    // WebSocket base URL (default: "wss://clob.polymarket.com/ws")
   debug?: boolean;       // Enable debug logging (default: false)
@@ -610,7 +610,7 @@ Contact Polymarket to request builder credentials.
 Token IDs are found in the market data:
 
 ```typescript
-const sdk = new POLYNOCTONSDK();
+const sdk = new POLYCAVORASDK();
 const market = await sdk.getMarket("market-id");
 
 // Inspect the raw data to find token IDs
@@ -633,7 +633,7 @@ You can also use the CLOB API directly to query token information.
 const provider = new ethers.providers.Web3Provider(window.ethereum);
 const signer = provider.getSigner();
 
-const sdk = new POLYNOCTONSDK({
+const sdk = new POLYCAVORASDK({
   trading: {
     chainId: 137,
     frontend: { signer }
@@ -694,8 +694,8 @@ Always start with small orders to understand the total costs.
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/POLYNOCTON/POLYNOCTON-sdk.git
-cd POLYNOCTON-sdk
+git clone https://github.com/POLYCAVORA/POLYCAVORA-sdk.git
+cd POLYCAVORA-sdk
 ```
 
 2. Install dependencies:
@@ -724,8 +724,8 @@ The `examples/` directory contains sample scripts demonstrating SDK usage:
 # List all markets
 npm run examples:list
 
-# Stream live orderbook data (set POLYNOCTON_MARKET_ID env var)
-POLYNOCTON_MARKET_ID=your-market-id npm run examples:orderbook
+# Stream live orderbook data (set POLYCAVORA_MARKET_ID env var)
+POLYCAVORA_MARKET_ID=your-market-id npm run examples:orderbook
 ```
 
 ---
@@ -735,14 +735,14 @@ POLYNOCTON_MARKET_ID=your-market-id npm run examples:orderbook
 The SDK includes built-in error handling with custom error types:
 
 ```typescript
-import { POLYNOCTONSDK, POLYNOCTONError, HttpError } from "@POLYNOCTON/sdk";
+import { POLYCAVORASDK, POLYCAVORAError, HttpError } from "@POLYCAVORA/sdk";
 
 try {
   const market = await sdk.getMarket("invalid-id");
 } catch (error) {
   if (error instanceof HttpError) {
     console.error(`HTTP ${error.status}: ${error.message}`);
-  } else if (error instanceof POLYNOCTONError) {
+  } else if (error instanceof POLYCAVORAError) {
     console.error(`Error ${error.code}: ${error.message}`);
   }
 }
@@ -762,9 +762,9 @@ We welcome contributions! Here's how you can help:
 
 ---
 
-## 💡 About POLYNOCTON
+## 💡 About POLYCAVORA
 
-POLYNOCTON aims to become the go-to SDK and data layer for **on-chain prediction markets**, starting with **Polymarket**.
+POLYCAVORA aims to become the go-to SDK and data layer for **on-chain prediction markets**, starting with **Polymarket**.
 
 Our goal is to make it easy for anyone — from developers to traders — to build tools that enhance their prediction-market experience.
 
@@ -781,10 +781,10 @@ Our goal is to make it easy for anyone — from developers to traders — to bui
 
 ### Follow Us
 
-- 🐦 X (Twitter): [@POLYNOCTON](https://x.com/polynoctonxyz)
-- 🌐 Website: [https://POLYNOCTON.xyz](https://polynocton.xyz)
+- 🐦 X (Twitter): [@POLYCAVORA](https://x.com/POLYCAVORAxyz)
+- 🌐 Website: [https://POLYCAVORA.xyz](https://POLYCAVORA.xyz)
 
-### $POLYNOCTON Token
+### $POLYCAVORA Token
 
 Native token launched on PumpFun (Solana)  
 **Contract Address:** `Launching Soon`
@@ -799,10 +799,10 @@ This project is licensed under the [MIT License](./LICENSE).
 
 ## 🙏 Acknowledgments
 
-Built with ❤️ by the POLYNOCTON team for the prediction market community.
+Built with ❤️ by the POLYCAVORA team for the prediction market community.
 
 Special thanks to [Polymarket](https://polymarket.com) for providing the infrastructure that makes this SDK possible.
 
 ---
 
-**© 2026 POLYNOCTON** — Building the prediction-market toolkit of the future.
+**© 2026 POLYCAVORA** — Building the prediction-market toolkit of the future.
