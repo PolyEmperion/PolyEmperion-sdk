@@ -1,12 +1,12 @@
-# 🎓 POLYNOCTON SDK - Complete Guide for Newbies
+# 🎓 POLYCAVORA SDK - Complete Guide for Newbies
 
-Welcome! This guide will help you understand and use the POLYNOCTON SDK, even if you're new to programming or blockchain. We'll explain everything step by step.
+Welcome! This guide will help you understand and use the POLYCAVORA SDK, even if you're new to programming or blockchain. We'll explain everything step by step.
 
 ---
 
 ## 📚 Table of Contents
 
-1. [What is POLYNOCTON SDK?](#what-is-POLYNOCTON-sdk)
+1. [What is POLYCAVORA SDK?](#what-is-POLYCAVORA-sdk)
 2. [What Can You Build?](#what-can-you-build)
 3. [Prerequisites](#prerequisites)
 4. [Installation](#installation)
@@ -19,9 +19,9 @@ Welcome! This guide will help you understand and use the POLYNOCTON SDK, even if
 
 ---
 
-## What is POLYNOCTON SDK?
+## What is POLYCAVORA SDK?
 
-**POLYNOCTON SDK** is a tool (software development kit) that lets you interact with **Polymarket** - a platform where people bet on real-world events.
+**POLYCAVORA SDK** is a tool (software development kit) that lets you interact with **Polymarket** - a platform where people bet on real-world events.
 
 Think of it like this:
 - 🏛️ Polymarket is like a stock exchange, but for predictions
@@ -107,7 +107,7 @@ npm init -y
 ### Step 2: Install the SDK
 
 ```bash
-npm install @POLYNOCTON/sdk
+npm install @POLYCAVORA/sdk
 ```
 
 ### Step 3: Install WebSocket Support (for Node.js)
@@ -131,7 +131,7 @@ npm install --save-dev typescript tsx
 Create a file called `index.ts`:
 
 ```typescript
-import { POLYNOCTONSDK } from "@POLYNOCTON/sdk";
+import { POLYCAVORASDK } from "@POLYCAVORA/sdk";
 
 console.log("Hello Polymarket! 🚀");
 ```
@@ -184,11 +184,11 @@ Let's start with the simplest use case: getting market data.
 Create a file called `get-markets.ts`:
 
 ```typescript
-import { POLYNOCTONSDK } from "@POLYNOCTON/sdk";
+import { POLYCAVORASDK } from "@POLYCAVORA/sdk";
 
 async function main() {
   // Create SDK instance (no config needed for data-only)
-  const sdk = new POLYNOCTONSDK();
+  const sdk = new POLYCAVORASDK();
 
   // Fetch all active markets
   const markets = await sdk.getMarkets();
@@ -220,10 +220,10 @@ npx tsx get-markets.ts
 ### Example 2: Get a Specific Market
 
 ```typescript
-import { POLYNOCTONSDK } from "@POLYNOCTON/sdk";
+import { POLYCAVORASDK } from "@POLYCAVORA/sdk";
 
 async function main() {
-  const sdk = new POLYNOCTONSDK();
+  const sdk = new POLYCAVORASDK();
 
   // Replace with a real market ID
   const marketId = "0x123...";
@@ -243,7 +243,7 @@ main().catch(console.error);
 **IMPORTANT:** For WebSocket in Node.js, add this at the top:
 
 ```typescript
-import { POLYNOCTONSDK } from "@POLYNOCTON/sdk";
+import { POLYCAVORASDK } from "@POLYCAVORA/sdk";
 
 // Enable WebSocket in Node.js
 if (typeof window === "undefined") {
@@ -251,7 +251,7 @@ if (typeof window === "undefined") {
 }
 
 async function main() {
-  const sdk = new POLYNOCTONSDK({ debug: true });
+  const sdk = new POLYCAVORASDK({ debug: true });
 
   const marketId = "0x123..."; // Replace with real ID
 
@@ -338,7 +338,7 @@ Add `.env` to your `.gitignore`:
 ### Example 1: Initialize Trading
 
 ```typescript
-import { POLYNOCTONSDK } from "@POLYNOCTON/sdk";
+import { POLYCAVORASDK } from "@POLYCAVORA/sdk";
 
 // Load private key from environment
 const privateKey = process.env.PRIVATE_KEY;
@@ -347,7 +347,7 @@ if (!privateKey) {
   throw new Error("Please set PRIVATE_KEY in your .env file");
 }
 
-const sdk = new POLYNOCTONSDK({
+const sdk = new POLYCAVORASDK({
   trading: {
     chainId: 137, // Polygon mainnet
     backend: {
@@ -366,11 +366,11 @@ console.log("Your wallet:", trading.getWalletAddress());
 ### Example 2: Place Your First Order
 
 ```typescript
-import { POLYNOCTONSDK } from "@POLYNOCTON/sdk";
+import { POLYCAVORASDK } from "@POLYCAVORA/sdk";
 
 async function main() {
   // Setup SDK (same as above)
-  const sdk = new POLYNOCTONSDK({
+  const sdk = new POLYCAVORASDK({
     trading: {
       chainId: 137,
       backend: {
@@ -443,10 +443,10 @@ Here's a complete example that:
 4. Cancels the order if not filled
 
 ```typescript
-import { POLYNOCTONSDK } from "@POLYNOCTON/sdk";
+import { POLYCAVORASDK } from "@POLYCAVORA/sdk";
 
 async function main() {
-  const sdk = new POLYNOCTONSDK({
+  const sdk = new POLYCAVORASDK({
     trading: {
       chainId: 137,
       backend: { privateKey: process.env.PRIVATE_KEY! },
@@ -498,14 +498,14 @@ main().catch(console.error);
 Get notified when a market reaches a certain price:
 
 ```typescript
-import { POLYNOCTONSDK } from "@POLYNOCTON/sdk";
+import { POLYCAVORASDK } from "@POLYCAVORA/sdk";
 
 // Enable WebSocket for Node.js
 if (typeof window === "undefined") {
   globalThis.WebSocket = (await import("ws")).default as any;
 }
 
-const sdk = new POLYNOCTONSDK();
+const sdk = new POLYCAVORASDK();
 
 const marketId = "0x123...";
 const targetPrice = 0.70; // Alert when YES hits 70%
@@ -527,10 +527,10 @@ sdk.onOrderbook(marketId, (update) => {
 Automatically provide liquidity:
 
 ```typescript
-import { POLYNOCTONSDK } from "@POLYNOCTON/sdk";
+import { POLYCAVORASDK } from "@POLYCAVORA/sdk";
 
 async function marketMaker() {
-  const sdk = new POLYNOCTONSDK({
+  const sdk = new POLYCAVORASDK({
     trading: {
       chainId: 137,
       backend: { privateKey: process.env.PRIVATE_KEY! },
@@ -570,10 +570,10 @@ marketMaker().catch(console.error);
 Find price differences between markets:
 
 ```typescript
-import { POLYNOCTONSDK } from "@POLYNOCTON/sdk";
+import { POLYCAVORASDK } from "@POLYCAVORA/sdk";
 
 async function scanArbitrage() {
-  const sdk = new POLYNOCTONSDK();
+  const sdk = new POLYCAVORASDK();
   const markets = await sdk.getMarkets();
 
   // Find related markets
@@ -607,11 +607,11 @@ scanArbitrage().catch(console.error);
 
 ### Common Errors
 
-#### "Cannot find module '@POLYNOCTON/sdk'"
+#### "Cannot find module '@POLYCAVORA/sdk'"
 
 **Solution:** Make sure you installed the SDK:
 ```bash
-npm install @POLYNOCTON/sdk
+npm install @POLYCAVORA/sdk
 ```
 
 #### "WebSocket is not defined"
@@ -632,7 +632,7 @@ npm install ws
 
 **Solution:** You need to pass trading config:
 ```typescript
-const sdk = new POLYNOCTONSDK({
+const sdk = new POLYCAVORASDK({
   trading: {
     chainId: 137,
     backend: { privateKey: process.env.PRIVATE_KEY! },
@@ -664,8 +664,8 @@ If you're stuck:
 
 1. **Check the examples** - Look at the `examples/` folder
 2. **Read the API docs** - Check the README for detailed API reference
-3. **Open an issue** - https://github.com/POLYNOCTON/POLYNOCTON-sdk/issues
-4. **Ask the community** - Join the POLYNOCTON Discord/Telegram
+3. **Open an issue** - https://github.com/POLYCAVORA/POLYCAVORA-sdk/issues
+4. **Ask the community** - Join the POLYCAVORA Discord/Telegram
 
 ---
 
@@ -719,7 +719,7 @@ Contact Polymarket to get builder credentials.
 Token IDs are in the market data:
 
 ```typescript
-const sdk = new POLYNOCTONSDK();
+const sdk = new POLYCAVORASDK();
 const market = await sdk.getMarket("market-id");
 
 // Token IDs are in the raw data
@@ -739,7 +739,7 @@ console.log(market.raw);
 2. Use frontend trading mode with wallet connection:
 
 ```typescript
-import { POLYNOCTONSDK } from "@POLYNOCTON/sdk";
+import { POLYCAVORASDK } from "@POLYCAVORA/sdk";
 import { ethers } from "ethers";
 
 // Connect to user's wallet
@@ -748,7 +748,7 @@ await provider.send("eth_requestAccounts", []);
 const signer = provider.getSigner();
 
 // Initialize SDK with frontend mode
-const sdk = new POLYNOCTONSDK({
+const sdk = new POLYCAVORASDK({
   trading: {
     chainId: 137,
     frontend: { signer },
@@ -813,11 +813,11 @@ Congratulations on making it through the guide! 🎉
 **Resources:**
 - 📖 Full API Reference: [README.md](./README.md)
 - 💻 Example Code: [examples/](./examples/)
-- 🐛 Report Issues: [GitHub Issues](https://github.com/POLYNOCTON/POLYNOCTON-sdk/issues)
-- 🌐 Website: [POLYNOCTON.xyz](https://polynocton.xyz)
+- 🐛 Report Issues: [GitHub Issues](https://github.com/POLYCAVORA/POLYCAVORA-sdk/issues)
+- 🌐 Website: [POLYCAVORA.xyz](https://POLYCAVORA.xyz)
 
 **Happy building! 🚀**
 
 ---
 
-*Made with ❤️ by the POLYNOCTON team for the prediction market community*
+*Made with ❤️ by the POLYCAVORA team for the prediction market community*
